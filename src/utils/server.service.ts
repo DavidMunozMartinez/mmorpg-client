@@ -1,6 +1,11 @@
-type WebSocketEvent = {
+type InputWSEvent = {
     playerId: string;
     action: number
+}
+
+type OutputWSEvent = {
+    eventType: number;
+    data: any;
 }
 
 class ServerServiceClass {
@@ -10,9 +15,13 @@ class ServerServiceClass {
 
     initWSConnection() {
         let WS: WebSocket = new WebSocket(`ws://${this.#wsServer}/ws`);
-        WS.addEventListener('message', (data: MessageEvent<WebSocketEvent>) => {
+        WS.addEventListener('message', (data: MessageEvent<InputWSEvent>) => {
             console.log(data)
         });
+    }
+
+    sendEvent(event: OutputWSEvent) {
+
     }
 }
 

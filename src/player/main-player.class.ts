@@ -1,5 +1,5 @@
-import { WSEvents } from "../utils/websocket.model";
-import { WebSocketService } from "../utils/websocket.service";
+import { WSEvents } from "../utils/websocket/websocket.model";
+import { WebSocketService } from "../utils/websocket/websocket.service";
 import { PlayerClass } from "./player.class";
 import { PLAYER_EVENTS, DIRECTIONS } from "./player.model";
 

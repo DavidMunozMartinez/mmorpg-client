@@ -1,4 +1,4 @@
-import { handlePlayerWSEvents } from "../player/player.handler";
+import { handlePlayerWSEvents } from "../../player/player.handler";
 import { WSEventData, WSEvents } from "./websocket.model";
 
 /**

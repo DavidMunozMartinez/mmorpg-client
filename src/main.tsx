@@ -1,7 +1,7 @@
 /* @refresh skip */
 
 import { LoginService } from './utils/login.service'
-import { WebSocketService } from './utils/websocket.service';
+import { WebSocketService } from './utils/websocket/websocket.service';
 import { initializeMainPlayer } from './player/player.handler';
 import { render } from 'solid-js/web';
 

@@ -1,4 +1,4 @@
-import { IsLocal, Server } from "./server.service";
+import { IsLocal, Server } from "../server.service";
 import { handleWSEvent } from "./websocket.handler";
 import { WSEventData } from "./websocket.model";
 

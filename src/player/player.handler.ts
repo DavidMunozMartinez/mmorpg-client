@@ -1,4 +1,4 @@
-import { WSEventData } from "../utils/websocket.model";
+import { WSEventData } from "../utils/websocket/websocket.model";
 import { MainPlayerClass } from "./main-player.class";
 import { PlayerClass } from "./player.class";
 import { PLAYER_EVENTS } from "./player.model";

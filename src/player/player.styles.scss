@@ -1,0 +1,17 @@
+.player {
+  transition: transform 100ms ease-in-out;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+.player.main-player {
+  background-color: green;
+  z-index: 1;
+}
+
+.player {
+  background-color: blue;
+}

@@ -1,8 +1,8 @@
 export class LoginServiceClass {
     constructor() {}
 
-    isAuth(): Promise<boolean> {
-        return Promise.resolve(true);
+    isAuth(): Promise<{ playerId: string }> {
+        return Promise.resolve({ playerId: (Math.random() + 1).toString(36).substring(7) });
     }
 
     register() {}

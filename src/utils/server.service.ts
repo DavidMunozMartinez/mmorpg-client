@@ -1,28 +1,8 @@
-type InputWSEvent = {
-    playerId: string;
-    action: number
-}
-
-type OutputWSEvent = {
-    eventType: number;
-    data: any;
-}
+export const IsLocal = true;
+export const Server = IsLocal ? 'localhost:8080' : 'mmorpg-server-bun-production.up.railway.app:8080';
 
 class ServerServiceClass {
-    #wsServer: string = 'localhost:8080';
-
-    constructor(){}
-
-    initWSConnection() {
-        let WS: WebSocket = new WebSocket(`ws://${this.#wsServer}/ws`);
-        WS.addEventListener('message', (data: MessageEvent<InputWSEvent>) => {
-            console.log(data)
-        });
-    }
-
-    sendEvent(event: OutputWSEvent) {
-
-    }
+    constructor() {}
 }
 
-export const ServerService = new ServerServiceClass() 
+export const ServerService = new ServerServiceClass();

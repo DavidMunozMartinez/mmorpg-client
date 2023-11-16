@@ -1,7 +1,7 @@
 import { WSEventData } from "../utils/websocket/websocket.model";
 import { MainPlayerClass } from "./main-player.class";
 import { PlayerClass } from "./player.class";
-import { PLAYER_EVENTS } from "./player.model";
+import { DIRECTIONS, PLAYER_EVENTS, RenderPlayerData } from "./player.model";
 import { PlayerService } from "./player.service";
 
 import './player.styles.scss';
@@ -16,6 +16,20 @@ export function initializeMainPlayer(playerId: string) {
   PlayerService.mainPlayerId = playerId;
   PlayerService.add(MainPlayer);
   MainPlayer.initMoveEvents();
+}
+
+export function initializeCurrentLivePlayers(players: RenderPlayerData[]) {
+  players.map((player) => {
+    const Player = new PlayerClass(player.id);
+    const [x, y] = player.position;
+    Player.direction = DIRECTIONS.DOWN;
+    Player.x = x * Player.stepSize;
+    Player.y = y * Player.stepSize;
+    Player.health = player.health;
+    Player.setTransform();
+    PlayerService.add(Player);
+  });
+
 }
 
 /**

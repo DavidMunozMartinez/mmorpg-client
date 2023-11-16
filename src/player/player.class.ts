@@ -11,6 +11,7 @@ export class PlayerClass {
     y = 0;
     health: number = -1;
     stepSize: number = 20;
+    direction: DIRECTIONS = DIRECTIONS.DOWN;
 
     constructor(id: string) {
         addPlayerToMap(id);
@@ -35,6 +36,11 @@ export class PlayerClass {
             case DIRECTIONS.RIGHT:
                 this.x = this.x + this.stepSize;
         }
+        this.setTransform();
+        this.direction = direction; 
+    }
+
+    setTransform() {
         if (this.playerRef) {
             this.playerRef.style.transform = `translate(${this.x}px, ${this.y}px)`
         }

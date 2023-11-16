@@ -1,11 +1,11 @@
 /* @refresh skip */
-
 import { LoginService } from './utils/login.service'
 import { WebSocketService } from './utils/websocket/websocket.service';
-import { initializeMainPlayer } from './player/player.handler';
+import { initializeCurrentLivePlayers, initializeMainPlayer } from './player/player.handler';
 import { render } from 'solid-js/web';
 
 import './style.scss'
+import { ServerService } from './utils/server.service';
 
 const app = document.getElementById('app');
 render(App, app!)
@@ -17,6 +17,10 @@ function App() {
   async function init () {
     const auth = await LoginService.isAuth();
     if (auth) {
+      // Get online players before we ourself go online so we don't get ourself in the list
+      const players = await ServerService.getOnlineRenderPlayers();
+      initializeCurrentLivePlayers(players);
+
       await WebSocketService.init(auth.playerId);
       initializeMainPlayer(auth.playerId);
     }

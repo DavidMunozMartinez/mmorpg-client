@@ -3,6 +3,7 @@ import { handleWSEvent } from "./websocket.handler";
 import { WSEventData } from "./websocket.model";
 
 export const WSProtocol = IsLocal ? 'ws' : 'wss';
+export const WSPort = '8080';
 
 export class WebSocketServiceClass {
   constructor() {}
@@ -14,7 +15,7 @@ export class WebSocketServiceClass {
    */
   init(playerId: string): Promise<boolean> {
     return new Promise((resolve) => {
-      let webSocket: WebSocket = new WebSocket(`${WSProtocol}://${Server}/ws?userId=${playerId}`);
+      let webSocket: WebSocket = new WebSocket(`${WSProtocol}://${Server}:${WSPort}/ws?userId=${playerId}`);
 
       webSocket.addEventListener('open', () => {
         this.onConnectionOpen();

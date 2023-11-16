@@ -11,3 +11,13 @@ export enum DIRECTIONS {
   LEFT,
   RIGHT,
 }
+
+/**
+ * Represents the player data necessary to render the player
+ */
+export type RenderPlayerData = {
+  id: string;
+  position: [number, number];
+  name: string;
+  health: number;
+}

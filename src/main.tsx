@@ -16,13 +16,17 @@ render(App, app!)
 function App() {
   async function init () {
     const auth = await LoginService.isAuth();
-    if (auth) {
+    if (auth.playerId) {
       // Get online players before we ourself go online so we don't get ourself in the list
       const players = await ServerService.getOnlineRenderPlayers();
       initializeCurrentLivePlayers(players);
 
       await WebSocketService.init(auth.playerId);
       initializeMainPlayer(auth.playerId);
+    } else {
+      // Open login view
+      const data = await LoginService.authenticate('', '');
+      console.log(data);
     }
   }
   init();

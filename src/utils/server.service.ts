@@ -1,6 +1,7 @@
 import { RenderPlayerData } from "../player/player.model";
 
 export const IsLocal = true;
+
 export const Server = IsLocal ? 'localhost' : 'mmorpg-server-bun-production.up.railway.app:8080';
 export const APIPort = '3000';
 export const HttpProtocol = IsLocal ? 'http' : 'https';

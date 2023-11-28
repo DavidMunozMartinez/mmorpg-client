@@ -1,31 +1,28 @@
-import { PlayerClass } from "../player/player.class";
-import { HttpProtocol, Server, APIPort } from "./server.service";
+import { HttpProtocol, Server, APIPort } from './server.service'
 
 export class LoginServiceClass {
-    constructor() {}
+  async authenticate (userName: string, password: string): Promise<{ playerData: any }> {
+    return await fetch(`${HttpProtocol}://${Server}:${APIPort}/authenticate`)
+      .then(async (response: Response) => {
+        return await response.json()
+      })
+      .then((data) => {
+        console.log(data)
+        return data
+      })
+  }
 
-    authenticate(userName: string, password: string): Promise<{ playerData: any }> {
-        return fetch(`${HttpProtocol}://${Server}:${APIPort}/authenticate`)
-            .then((response: Response) => {
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-                return data;
-            });
-    }
+  // Checks if current players token is still valid
+  async isAuth (): Promise<{ playerId: string | null }> {
+    const playerId = (Math.random() + 1).toString(36).substring(7)
+    return await Promise.resolve({ playerId })
+  }
 
-    // Checks if current players token is still valid
-    isAuth(): Promise<{ playerId: string | null }> {
-        const playerId = (Math.random() + 1).toString(36).substring(7);
-        return Promise.resolve({ playerId: null });
-    }
+  register () {}
 
-    register() {}
+  login () {}
 
-    login() {}
-
-    logout() {}
+  logout () {}
 }
 
-export const LoginService = new LoginServiceClass();
+export const LoginService = new LoginServiceClass()

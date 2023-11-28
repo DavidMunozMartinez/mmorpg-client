@@ -15,9 +15,9 @@ export enum DIRECTIONS {
 /**
  * Represents the player data necessary to render the player
  */
-export type RenderPlayerData = {
-  id: string;
-  position: [number, number];
-  name: string;
-  health: number;
+export interface RenderPlayerData {
+  id: string
+  position: [number, number]
+  name: string
+  health: number
 }

@@ -17,7 +17,7 @@ npm run dev
 
 ### Variables
 ```ts
-const Example = "";
+const example = "";
 let exmapleTest = "";
 ```
 
@@ -58,9 +58,8 @@ export const SomeExampleService = new SomeExampleServiceClass()
 ```
 
 
-
 ### Handlers
-Should contain logic around a specific topic that could or could not manipulate different instances of classes
+Should contain logic around a specific topic that does not require any type of state
 
 ```file-name.handler.ts```
 

@@ -19,6 +19,42 @@ class ServerServiceClass {
         return data
       })
   }
+
+  async registerAccount (email: string, password: string): Promise<{ success: boolean }> {
+    try {
+      const url = `${HttpProtocol}://${Server}:${APIPort}/register`
+      const fetchResponse = await fetch(url, {
+        body: JSON.stringify({
+          email,
+          password
+        }),
+        method: 'POST'
+      })
+      await fetchResponse.json()
+      return { success: true }
+    } catch (error) {
+      console.error(error)
+      return { success: false }
+    }
+  }
+
+  async authenticateAccount (email: string, password: string): Promise<{ success: boolean, msg?: string }> {
+    try {
+      const url = `${HttpProtocol}://${Server}:${APIPort}/authenticate`
+      const fetchResponse = await fetch(url, {
+        body: JSON.stringify({
+          email,
+          password
+        }),
+        method: 'POST'
+      })
+      await fetchResponse.json()
+      return { success: true }
+    } catch (error) {
+      console.error(error)
+      return { success: false }
+    }
+  }
 }
 
 export const ServerService = new ServerServiceClass()

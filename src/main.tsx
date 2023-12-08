@@ -6,7 +6,6 @@ import { render } from 'solid-js/web'
 
 import './style.scss'
 import { ServerService } from './utils/server.service'
-import { RegisterComponent } from './components/authentication/register.component'
 
 const app = document.getElementById('app') as HTMLElement
 render(App, app)
@@ -35,7 +34,6 @@ await init()
 function App () {
   return (
     <>
-      {/* <RegisterComponent></RegisterComponent> */}
       <div class="game-view">
         {/* Turn map into a SolidJS component */}
         <div id="map" class="game" tabindex="0"></div>

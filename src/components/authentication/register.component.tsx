@@ -20,18 +20,6 @@ export function RegisterComponent () {
       })
   }
 
-  const authenticate = () => {
-    ServerService.authenticateAccount(email(), password())
-      .then(({ success }) => {
-        console.log(success)
-      })
-      .catch(() => {
-
-      })
-      .finally(() => {
-
-      })
-  }
   return (
     <>
       <div>
@@ -39,12 +27,6 @@ export function RegisterComponent () {
         <input type="text" onchange={(e) => setEmail(e.target.value)} />
         <input type="password" name="password" id="password" onchange={(e) => setPassword(e.target.value)} />
         <button onclick={() => { register() }}></button>
-      </div>
-      <div>
-        <h2>Authenticate</h2>
-        <input type="text" onchange={(e) => setEmail(e.target.value)} />
-        <input type="password" name="password" id="password" onchange={(e) => setPassword(e.target.value)} />
-        <button onclick={() => { authenticate() }}></button>
       </div>
     </>
   )
